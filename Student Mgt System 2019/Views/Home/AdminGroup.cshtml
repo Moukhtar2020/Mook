@@ -1,0 +1,45 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Groups Edit";
+}
+
+@if ((string)Session["user_type"] != "0")
+{
+    Response.Redirect("~/Home/Index");
+}
+
+<h2>Groups Edit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AdminGroupAdd", "Home")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Group Title
+        </th>
+        <th>
+            Student Name
+        </th>
+        <th></th>
+    </tr>
+
+@for (int i = 0; i < Model.Rows.Count;i++ )
+{ 
+    <tr>
+        <td>
+            @Model.Rows[i]["group_title"]
+        </td>
+        <td>
+            @Model.Rows[i]["reg_name"]
+        </td>
+        <td>
+            <a href="./AdminGroupEdit/@Model.Rows[i]["group_id"]">Edit</a>
+            |
+            <a href="./AdminGroupDelete/@Model.Rows[i]["group_id"]">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

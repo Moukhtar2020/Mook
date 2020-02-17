@@ -1,0 +1,64 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Research Projects";
+}
+
+<h2>Projects</h2>
+
+
+<table class="table">
+    <tr>
+        
+
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        
+        
+        <tr>
+            <td>
+              <b> Project Id -</b> @Model.Rows[i]["research_id"]
+            </td>
+           
+
+        </tr>
+        
+        <tr>
+            <td>
+               <b>Year -</b> @Model.Rows[i]["research_year"]
+            </td>
+           
+
+        </tr>
+        
+        <tr>
+            <td>
+              <b> Title -</b>  @Model.Rows[i]["research_title"]
+            </td>
+           
+
+        </tr>
+        
+        
+        <tr>
+            <td>
+             <b> People Involved -</b> @Model.Rows[i]["research_people"]
+            </td>
+           
+
+        </tr>
+        
+         <tr>
+           
+           
+
+        </tr>
+        
+        
+        
+        
+    }
+
+</table>

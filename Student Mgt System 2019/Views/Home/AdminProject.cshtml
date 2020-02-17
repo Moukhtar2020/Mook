@@ -1,0 +1,59 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Edit Projects";
+}
+
+@if ((string)Session["user_type"] != "0")
+{
+    Response.Redirect("~/Home/Index");
+}
+
+
+<h2>AdminProject</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AdminProjectAdd","Home")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Title
+        </th>
+        <th>
+           Description
+        </th>
+        <th>
+           
+        </th>
+        <th>
+            Student
+        </th>
+        <th></th>
+    </tr>
+
+@for (int i = 0; i < Model.Rows.Count;i++ )
+{
+    <tr>
+        <td>
+            @Model.Rows[i]["project_title"]
+        </td>
+        <td>
+            @Model.Rows[i]["project_text"]
+        </td>
+        <td>
+            <img src="../Assets/@Model.Rows[i]["project_picture"]" width="50" height="50"/>
+        </td>
+        <td>
+            @Model.Rows[i]["reg_name"]
+        </td>
+        <td>
+            <a href="./AdminProjectEdit/@Model.Rows[i]["project_id"]">Edit</a>
+             | 
+            <a href="./AdminProjectDelete/@Model.Rows[i]["project_id"]">Delete</a>
+        </td>
+      
+    </tr>
+}
+
+</table>

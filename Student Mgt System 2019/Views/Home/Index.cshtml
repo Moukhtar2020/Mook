@@ -1,0 +1,25 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Lab Details";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h2 style="text-align:center;">Lab Details</h2>
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <p>@Model.Rows[i][1]</p>
+        }
+
+
+        @if((string)Session["user_type"] == "0") // 0 for admin
+        {
+            @Html.ActionLink("Update", "UpdateLab") 
+        }
+        
+    </div>
+</div>

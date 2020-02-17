@@ -1,0 +1,59 @@
+﻿@model Student_Mgt_System_2019.Models.ResearchModel
+
+@{
+    ViewBag.Title = "Research Add";
+}
+
+@if ((string)Session["user_type"] != "0")
+{
+    Response.Redirect("~/Home/Index");
+}
+
+<h2>Research Add</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.people_involved, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.people_involved, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.people_involved)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.year, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.year, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,66 @@
+﻿@model Student_Mgt_System_2019.Models.Profile
+
+@{
+    ViewBag.Title = "EditProfile2";
+}
+
+<h2>Edit Profile Page</h2>
+
+@using (Html.BeginForm("EditProfile2", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Profile</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.collaborator, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.collaborator, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.collaborator)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.industrial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.industrial, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.industrial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.description)
+            </div>
+        </div>
+
+        <div class="form-group">
+          
+            <div class="col-md-10">
+                <input type="file" name="profile_image" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>

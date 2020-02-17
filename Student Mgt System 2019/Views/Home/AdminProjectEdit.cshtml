@@ -1,0 +1,65 @@
+﻿@model Student_Mgt_System_2019.Models.ProjectModel
+
+@{
+    ViewBag.Title = "Project Edit";
+}
+
+@if ((string)Session["user_type"] != "0")
+{
+    Response.Redirect("~/Home/Index");
+}
+
+<h2>Project Edit</h2>
+
+@using (Html.BeginForm("AdminProjectEdit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ProjectModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id, new { @Value=@ViewBag.id})
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.title, new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.text, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.text, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.text)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="project_image" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.student_id_fk, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.student_id_fk, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.student_id_fk)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
