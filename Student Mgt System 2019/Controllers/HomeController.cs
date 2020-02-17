@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.IO;
 
 using Student_Mgt_System_2019.Models;
-
+ 
 namespace Student_Mgt_System_2019.Controllers
 {
     public class HomeController : Controller
